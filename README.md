@@ -1,2 +1,4 @@
 # Wordle_Python
-Re create New York Times wordle game in Python
+Recreated New York Times wordle game in Python
+
+# Shout out Python
