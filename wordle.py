@@ -71,35 +71,35 @@ def confirm_word(inputted_word, selected_word):
     :precondition: inputted_word and selected_word are both have
                     only 5 characters
     :postcondition: inputted_word and selected_word are compared for similarities of characters
-    :postcondition: a 2 is appended to a list if a character in inputted_word is the same
+    :postcondition: 'GREEN' is appended to a list if a character in inputted_word is the same
                     and in the same spot in as selected_word
-    :postcondition: a 1 is appended to a list if a character in inputted_word is the same
+    :postcondition: 'YELLOW' is appended to a list if a character in inputted_word is the same
                     and is not the same spot in as selected_word
-    :postcondition: a 0 is appended to a list if a character in inputted_word is not inside
+    :postcondition: 'WHITE' is appended to a list if a character in inputted_word is not inside
                     selected_word
-    :return: A tuple of integers
+    :return: A tuple of 5 strings
 
     >>> confirm_word('hello', 'hello')
-    (2, 2, 2, 2, 2)
+    ('GREEN', 'GREEN', 'GREEN', 'GREEN', 'GREEN')
 
     >>> confirm_word('pizza', 'hello')
-    (0, 0, 0, 0, 0)
+    ('WHITE', 'WHITE', 'WHITE', 'WHITE', 'WHITE')
 
     >>> confirm_word('porch', 'hello')
-    (0, 1, 0, 0, 1)
+    ('WHITE', 'YELLOW', 'WHITE', 'WHITE', 'YELLOW')
     """
     bool_list = []
     counter = 0
     for letter in inputted_word:
         if letter in selected_word:
             if letter == selected_word[counter]:
-                bool_list.append(2)
+                bool_list.append('GREEN')
                 counter += 1
             else:
-                bool_list.append(1)
+                bool_list.append('YELLOW')
                 counter += 1
         else:
-            bool_list.append(0)
+            bool_list.append('WHITE')
             counter += 1
     return tuple(bool_list)
 
@@ -114,16 +114,15 @@ def game():
     print(word)
     chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     '}
     counter = 1
-    display.draw_game(chosen_words)
+    display.draw_game(chosen_words, ('WHITE', 'WHITE', 'WHITE', 'WHITE', 'WHITE'))
     while play:
         user_input = input('Input a 5 letter word: ')
         validation = validate_word(user_input, list_of_words)
         if validation:
             compared = confirm_word(user_input, word)
-            print(compared)
             chosen_words[counter] = user_input
             counter += 1
-            display.draw_game(chosen_words)
+            display.draw_game(chosen_words, compared)
             if counter == 6:
                 play = False
     print('game over')
