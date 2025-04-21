@@ -77,7 +77,8 @@ def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int,
                     and is not the same spot in as selected_word
     :postcondition: a 0 is appended to a list if a character in inputted_word is not inside
                     selected_word
-    :return: A tuple of integers
+    :postcondition: bool_list has exactly 5 integers
+    :return: A tuple with 5 integers
 
     >>> confirm_word('hello', 'hello')
     (2, 2, 2, 2, 2)
