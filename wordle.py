@@ -78,7 +78,7 @@ def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int,
                     and is not the same spot in as selected_word
     :postcondition: a 0 is appended to a list if a character in inputted_word is not inside
                     selected_word
-    :postcondition: bool_list has exactly 5 integers
+    :postcondition: integer_list has exactly 5 integers
     :return: A tuple with 5 integers
 
     >>> confirm_word('hello', 'hello')
@@ -90,20 +90,20 @@ def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int,
     >>> confirm_word('porch', 'hello')
     (0, 1, 0, 0, 1)
     """
-    bool_list = []
+    integer_list = []
     counter = 0
     for letter in inputted_word:
         if letter in selected_word:
             if letter == selected_word[counter]:
-                bool_list.append(2)
+                integer_list.append(2)
                 counter += 1
             else:
-                bool_list.append(1)
+                integer_list.append(1)
                 counter += 1
         else:
-            bool_list.append(0)
+            integer_list.append(0)
             counter += 1
-    return tuple(bool_list)
+    return tuple(integer_list)
 
 
 def check_for_win(compared: dict) -> bool:
