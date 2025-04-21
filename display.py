@@ -1,6 +1,8 @@
 """
 Module designed for printing things to the terminal
 """
+from colorama import Fore, Style
+
 
 def intro():
     """
@@ -34,34 +36,45 @@ def intro():
             print('Please enter a valid command\n')
 
 
-def draw_game(word, chosen_words):
+def draw_game(chosen_words, compared):
     """
     Print wordle game to the console
 
-    :param word: a string with 5 characters
+    :param compared: a tuple
     :param chosen_words: a homogeneous dictionary of strings
-    :precondition: word is a 5 character string
+    :precondition: compared has 5 integers between 0 and 2 inclusive
     :precondition: chosen_words only contains values as 5 letter strings
     :postcondition: wordle game is printed to the console
     :postcondition: chosen_words remains unchanged
     """
-    print('┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓\n'
-          f'┃ {chosen_words[1][0]} ┃ ┃ {chosen_words[1][1]} ┃ ┃ {chosen_words[1][2]}'
-          f' ┃ ┃ {chosen_words[1][3]} ┃ ┃ {chosen_words[1][4]} ┃\n'
-          '┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛\n'
-          '┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓\n'
-          f'┃ {chosen_words[2][0]} ┃ ┃ {chosen_words[2][1]} ┃ ┃ {chosen_words[2][2]}'
-          f' ┃ ┃ {chosen_words[2][3]} ┃ ┃ {chosen_words[2][4]} ┃\n'
-          '┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛\n'
-          '┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓\n'
-          f'┃ {chosen_words[3][0]} ┃ ┃ {chosen_words[3][1]} ┃ ┃ {chosen_words[3][2]}'
-          f' ┃ ┃ {chosen_words[3][3]} ┃ ┃ {chosen_words[3][4]} ┃\n'
-          '┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛\n'
-          '┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓\n'
-          f'┃ {chosen_words[4][0]} ┃ ┃ {chosen_words[4][1]} ┃ ┃ {chosen_words[4][2]}'
-          f' ┃ ┃ {chosen_words[4][3]} ┃ ┃ {chosen_words[4][4]} ┃\n'
-          '┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛\n'
-          '┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓ ┏━━━┓\n'
-          f'┃ {chosen_words[5][0]} ┃ ┃ {chosen_words[5][1]} ┃ ┃ {chosen_words[5][2]}'
-          f' ┃ ┃ {chosen_words[5][3]} ┃ ┃ {chosen_words[5][4]} ┃\n'
-          '┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛ ┗━━━┛\n')
+    for key in range(1, 5):
+        for number in range(5):
+            if compared[number] == 1:
+                colour = Fore.YELLOW
+            elif compared[number] == 2:
+                colour = Fore.GREEN
+            else:
+                colour = Fore.WHITE
+            print(colour + '┏━━━┓', end='')
+            print(Style.RESET_ALL, end='')
+        print()
+        for value in range(5):
+            if compared[value] == 1:
+                colour = Fore.YELLOW
+            elif compared[value] == 2:
+                colour = Fore.GREEN
+            else:
+                colour = Fore.WHITE
+            print(colour + f'┃ {chosen_words[key][value]} ┃', end='')
+            print(Style.RESET_ALL, end='')
+        print()
+        for number in range(5):
+            if compared[number] == 1:
+                colour = Fore.YELLOW
+            elif compared[number] == 2:
+                colour = Fore.GREEN
+            else:
+                colour = Fore.WHITE
+            print(colour + '┗━━━┛', end='')
+            print(Style.RESET_ALL, end='')
+        print()
