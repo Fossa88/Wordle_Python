@@ -1,7 +1,9 @@
 """
 Module designed for printing things to the terminal
 """
-from colorama import Fore, Style
+from colorama import Fore, Style, init
+
+init(convert=True)
 
 
 def ascii_art():
