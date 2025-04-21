@@ -48,7 +48,7 @@ def intro():
         print('-----Welcome to wordle in Python-----\n'
               'To start the game input "start"\n'
               'To read the rules of wordle input "rules"\n'
-              'To quit the module input "quit"')
+              'To quit the module at any point in time input "quit"')
         user_value = str(input())
         if user_value.lower() == 'start':
             return True
