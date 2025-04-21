@@ -8,7 +8,7 @@ import random
 import display
 
 
-def validate_word(inputted_word, list_of_words):
+def validate_word(inputted_word: str, list_of_words: list):
     """
 
     :param inputted_word: a string
@@ -63,7 +63,7 @@ def select_word():
     return list_of_words
 
 
-def confirm_word(inputted_word, selected_word):
+def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int, int, int]:
     """
 
     :param inputted_word: a string
