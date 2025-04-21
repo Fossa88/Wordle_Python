@@ -2,6 +2,7 @@
 
 Recreating New York Times wordle game in Python
 
-# Shout out Python
+# Requirements
 
-Shout out Python
+This game requires the colorama python module to function correctly
+to install it put this in your terminal 'pip install colorama'
