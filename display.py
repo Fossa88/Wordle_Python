@@ -2,6 +2,7 @@
 Module designed for printing things to the terminal
 """
 from colorama import Fore, Style, init
+from sys import exit
 
 init(convert=True)
 
@@ -64,7 +65,7 @@ def intro():
                   '>> If the tile turns gray, the letter is not in the word.\n')
             input('Press enter to continue when ready!')
         elif user_value.lower() == 'quit':
-            return False
+            exit()
         else:
             print('Please enter a valid command\n')
 
