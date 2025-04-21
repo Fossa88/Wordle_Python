@@ -113,10 +113,10 @@ def check_for_win(compared: dict) -> bool:
     :postcondition: check is True or False based on compared values
     :return: A bool True or False
 
-    >>> check_for_win({1: (2, 2, 2, 2 ,2), 2: (1, 0, 0, 2, 1)})
+    >>> check_for_win({1: (2, 2, 2, 2 ,2)})
     False
 
-    >>> check_for_win({1: (1, 2, 2, 2, 2), 2: (1, 1, 1, 1, 1)})
+    >>> check_for_win({1: (1, 2, 2, 2, 2)})
     True
     """
     check = True
