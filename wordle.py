@@ -6,6 +6,7 @@ This shit is going to be so much harder than the new york times version because 
 """
 import random
 import display
+from sys import exit
 
 
 def validate_word(inputted_word: str, list_of_words: list):
@@ -134,7 +135,6 @@ def game():
     play = display.intro()
     list_of_words = get_words()
     word = random.choice(list_of_words)
-    print(word)
     compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
                 4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0), 6: (0, 0, 0, 0, 0)}
     chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     ', 6: '     '}
@@ -142,6 +142,10 @@ def game():
     display.draw_game(chosen_words, compared)
     while play:
         user_input = input('Input a 5 letter word: ')
+        if user_input.lower() == "quit":
+            input(f'\nThanks for playing the word was {word}\n'
+                  'Press enter to close the program')
+            exit()
         validation = validate_word(user_input, list_of_words)
         if validation:
             compared[counter] = confirm_word(user_input, word)
@@ -153,10 +157,12 @@ def game():
                 play = False
                 print('\n---Game Over, You Lose!---\n'
                       f'You did not guess the word in 6 tries. The word was {word}!')
+                input('Press enter to quit the game!')
             elif counter != 7 and play == False:
                 counter -= 1
                 print('\n---Game Over, You Win!---\n'
                       f'You successfully guessed the word in {counter}/6 tries!')
+                input('Press enter to quit the game!')
 
 
 if __name__ == '__main__':
