@@ -79,7 +79,7 @@ def draw_game(chosen_words, compared):
     :postcondition: chosen_words remains unchanged
     """
     ascii_art()
-    for key in range(1, 6):
+    for key in range(1, 7):
         for number in range(5):
             if compared[key][number] == 1:
                 colour = Fore.YELLOW

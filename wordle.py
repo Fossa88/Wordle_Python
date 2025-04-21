@@ -137,8 +137,8 @@ def game():
     word = random.choice(list_of_words)
     print(word)
     compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
-                4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0)}
-    chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     '}
+                4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0), 6: (0, 0, 0, 0, 0)}
+    chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     ', 6: '     '}
     counter = 1
     display.draw_game(chosen_words, compared)
     while play:
@@ -150,12 +150,11 @@ def game():
             counter += 1
             display.draw_game(chosen_words, compared)
             play = check_for_win(compared)
-            if counter == 6 and play != False:
+            if counter == 7 and play != False:
                 play = False
                 print('\n---Game Over, You Lose!---\n'
-                      'You did not guess the word in 5 tries\n'
-                      f'The word was {word}!')
-            elif counter != 6 and play == False:
+                      f'You did not guess the word in 6 tries. The word was {word}!')
+            elif counter != 7 and play == False:
                 counter -= 1
                 print('\n---Game Over, You Win!---\n'
                       f'You successfully guessed the word in {counter}/6 tries!')
