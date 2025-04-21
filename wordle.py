@@ -10,6 +10,7 @@ import display
 
 def validate_word(inputted_word: str, list_of_words: list):
     """
+    Check users word if it is a valid word to use
 
     :param inputted_word: a string
     :param list_of_words: a homogeneous list of strings
@@ -65,6 +66,7 @@ def select_word():
 
 def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int, int, int]:
     """
+    Check how many letters of the user selected work match the selected word
 
     :param inputted_word: a string
     :param selected_word: a string
@@ -107,7 +109,6 @@ def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int,
 def check_for_win(compared: dict) -> bool:
     """
     Compared a dictionaries value with a tuple to determine if the word was guessed
-
 
     :param compared: A dictionary
     :precondition: compared is a dictionary with values as tuples
