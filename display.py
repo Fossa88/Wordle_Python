@@ -47,11 +47,11 @@ def draw_game(chosen_words, compared):
     :postcondition: wordle game is printed to the console
     :postcondition: chosen_words remains unchanged
     """
-    for key in range(1, 5):
+    for key in range(5):
         for number in range(5):
-            if compared[number] == 1:
+            if compared[key][number] == 1:
                 colour = Fore.YELLOW
-            elif compared[number] == 2:
+            elif compared[key][number] == 2:
                 colour = Fore.GREEN
             else:
                 colour = Fore.WHITE
@@ -59,9 +59,9 @@ def draw_game(chosen_words, compared):
             print(Style.RESET_ALL, end='')
         print()
         for value in range(5):
-            if compared[value] == 1:
+            if compared[key][value] == 1:
                 colour = Fore.YELLOW
-            elif compared[value] == 2:
+            elif compared[key][value] == 2:
                 colour = Fore.GREEN
             else:
                 colour = Fore.WHITE
@@ -69,9 +69,9 @@ def draw_game(chosen_words, compared):
             print(Style.RESET_ALL, end='')
         print()
         for number in range(5):
-            if compared[number] == 1:
+            if compared[key][number] == 1:
                 colour = Fore.YELLOW
-            elif compared[number] == 2:
+            elif compared[key][number] == 2:
                 colour = Fore.GREEN
             else:
                 colour = Fore.WHITE
