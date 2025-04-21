@@ -45,16 +45,14 @@ def validate_word(inputted_word: str, list_of_words: list):
         return False
 
 
-def select_word():
+def get_words():
     """
-    Chose random word from words.txt
+    Generate list of words from words.txt
 
     :precondition: words.txt has strings inside
     :precondition: words.txt only has 5-letter words
-    :postcondition: list_of_words has every 5-letter word in the
-                    english language
-    :return: list_of_words as a list with every 5-letter word
-             in the english language
+    :postcondition: list_of_words has every 5-letter word from words.txt
+    :return: list_of_words as a list with every 5-letter word from words.txt
     """
     list_of_words = []
     with open('words.txt') as file_object:
@@ -133,7 +131,7 @@ def game():
     Drive the game
     """
     play = display.intro()
-    list_of_words = select_word()
+    list_of_words = get_words()
     word = random.choice(list_of_words)
     print(word)
     compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
