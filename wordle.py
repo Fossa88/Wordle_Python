@@ -112,14 +112,16 @@ def game():
     list_of_words = select_word()
     word = random.choice(list_of_words)
     print(word)
+    compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
+                4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0)}
     chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     '}
     counter = 1
-    display.draw_game(chosen_words, (0, 0, 0, 0, 0))
+    display.draw_game(chosen_words, compared)
     while play:
         user_input = input('Input a 5 letter word: ')
         validation = validate_word(user_input, list_of_words)
         if validation:
-            compared = confirm_word(user_input, word)
+            compared[counter] = confirm_word(user_input, word)
             print(compared)
             chosen_words[counter] = user_input
             counter += 1
