@@ -162,7 +162,6 @@ def game():
     play = display.intro()
     list_of_words = get_words()
     word = random.choice(list_of_words)
-    word = 'jumpy'
     compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
                 4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0), 6: (0, 0, 0, 0, 0)}
     chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     ', 6: '     '}
