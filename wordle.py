@@ -5,8 +5,10 @@ This shit is going to be so much harder than the new york times version because 
 0 filter on what word gets chosen so have fun with words like gonzo lmao
 """
 import random
+from html.parser import interesting_normal
+
 import display
-from sys import exit
+from sys import exit, intern
 
 
 def validate_word(inputted_word: str, list_of_words: list):
@@ -65,16 +67,16 @@ def get_words():
 
 def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int, int, int]:
     """
-    Check how many letters of the user selected work match the selected word
+    Check how many letters of the user selected word match the selected word
 
     :param inputted_word: a string
     :param selected_word: a string
-    :precondition: inputted_word and selected_word are both have
+    :precondition: inputted_word and selected_word both have
                     only 5 characters
     :postcondition: inputted_word and selected_word are compared for similarities of characters
     :postcondition: a 2 is appended to a list if a character in inputted_word is the same
                     and in the same spot in as selected_word
-    :postcondition: a 1 is appended to a list if a character in inputted_word is the same
+    :postcondition: a 1 is appended to a list if a character in inputted_word is the same letter
                     and is not the same spot in as selected_word
     :postcondition: a 0 is appended to a list if a character in inputted_word is not inside
                     selected_word
@@ -92,14 +94,39 @@ def confirm_word(inputted_word: str, selected_word: str) -> tuple[int, int, int,
     """
     integer_list = []
     counter = 0
+    count2 = 0
     for letter in inputted_word:
         if letter in selected_word:
-            if letter == selected_word[counter]:
-                integer_list.append(2)
-                counter += 1
+            if inputted_word.count(letter) <= 1 or count2 == 0:
+                count2 += 1
+                if selected_word.count(letter) <= 1:
+                    if letter == selected_word[counter]:
+                        integer_list.append(2)
+                        counter += 1
+                    else:
+                        integer_list.append(1)
+                        counter += 1
+                else:
+                    if letter == selected_word[counter]:
+                        integer_list.append(2)
+                        counter += 1
+                    else:
+                        if letter == selected_word[counter]:
+                            integer_list.append(2)
+                            counter += 1
+                        else:
+                            integer_list.append(1)
+                            counter += 1
             else:
-                integer_list.append(1)
-                counter += 1
+                if letter == selected_word[counter]:
+                    integer_list.append(2)
+                    counter += 1
+                elif letter in selected_word and selected_word.count(letter) > 1:
+                    integer_list.append(1)
+                    counter += 1
+                else:
+                    integer_list.append(0)
+                    counter += 1
         else:
             integer_list.append(0)
             counter += 1
@@ -135,6 +162,7 @@ def game():
     play = display.intro()
     list_of_words = get_words()
     word = random.choice(list_of_words)
+    word = 'jumpy'
     compared = {1: (0, 0, 0, 0, 0), 2: (0, 0, 0, 0, 0), 3: (0, 0, 0, 0, 0),
                 4: (0, 0, 0, 0, 0), 5: (0, 0, 0, 0, 0), 6: (0, 0, 0, 0, 0)}
     chosen_words = {1: '     ', 2: '     ', 3: '     ', 4: '     ', 5: '     ', 6: '     '}
